@@ -2,9 +2,11 @@ package com.subrutin.catalog.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.subrutin.catalog.dto.HelloMessageResponseDTO;
 import com.subrutin.catalog.service.GreetingService;
 
 @RestController
@@ -21,9 +23,11 @@ public class HelloResources {
 
     //Hello path
     @GetMapping("/hello")
-    public String helloWorld()
+    public ResponseEntity<HelloMessageResponseDTO> helloWorld()
     {
         log.info("This is log info");
-        return greetingService.sayGreeting();
+        HelloMessageResponseDTO dto = new HelloMessageResponseDTO();
+        dto.setMessage(greetingService.sayGreeting());
+        return ResponseEntity.ok().body(dto);
     }
 }

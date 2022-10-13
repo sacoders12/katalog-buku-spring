@@ -1,7 +1,8 @@
 package com.subrutin.catalog.dto;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -9,10 +10,12 @@ import lombok.Data;
 
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class BookDetailDTO implements Serializable {
-    public static final long serialVersionID = -7889938648939242355L;
-    private Long bookId;
-    private String authorName;
+public class BookUpdateRequestDTO {
+    @NotBlank
     private String bookTitle;
-    private String bookDescription;
+    // @NotBlank
+    // private String authorName;
+    
+    @JsonProperty("synopsis")
+    private String description;
 }
