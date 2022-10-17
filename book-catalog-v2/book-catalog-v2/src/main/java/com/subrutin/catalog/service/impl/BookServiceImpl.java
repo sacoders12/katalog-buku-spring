@@ -32,6 +32,7 @@ public class BookServiceImpl implements BookService {
         dto.setAuthorName(book.getAuthor().getName());
         dto.setBookTitle(book.getTitle());
         dto.setBookDescription(book.getDescription());
+        log.info("start find book");
         return dto;
     }
 
